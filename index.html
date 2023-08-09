@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	    
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Ramy Zaher | RS-CAD</title>
@@ -387,6 +389,31 @@ https://templatemo.com/tm-512-moonlight
                                 <div class="col-md-12">
                                   <fieldset>
                                     <button type="submit" id="form-submit" class="btn">Send Now</button>
+
+					  <script>
+      function sendMail(){
+        (function(){
+          emailjs.init("8yjNtCQc2ZKsDWl6H"); // Account Public Key
+        })();
+
+        var params = {
+          name: document.querySelector("#name").value,
+          email: document.querySelector("#email").value,
+          subject: document.querySelector("#subject").value,
+          message: document.querySelector("#message").value,
+        };
+
+        var serviceID = "service_w6x6z1h"; // Email Service ID
+        var templateID = "template_i7sptec"; // Email Template ID
+
+        emailjs.send(serviceID, templateID, params)
+        .then( res => {
+            alert("Email sent successfully!!")
+        })
+        .catch();
+      }
+    </script>
+					  
                                   </fieldset>
                                 </div>
                             </div>
